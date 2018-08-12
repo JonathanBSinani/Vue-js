@@ -6,6 +6,7 @@ var app = new Vue({
     altText: 'A pair of socks',
     inStock: false,
     inventory: 100,
-    onSale: true
+    onSale: true,
+    details: ["80% cotton", "20% polyester", "Gender-neutral"]
   }
 });

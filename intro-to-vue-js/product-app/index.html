@@ -15,10 +15,16 @@
 
         <div class="product-info">
           <h1>{{ product }}</h1>
+          <!-- conditional -->
           <p v-if="inventory > 10">In Stock</p>
           <p v-else-if="inventory > 0 && inventory < 10">Almost sold out!</p>
           <p v-else>Out of Stock</p>
           <span v-if="onSale">On Sale!</span>
+
+          <!-- loop -->
+          <ul>
+            <li v-for="detail in details">{{detail}}</li>
+          </ul>
         </div>
       </div>
     </div>
