@@ -22,6 +22,8 @@
              :class="{ outOfStock: !inStock }">Out of Stock</p>
           <span v-if="onSale">On Sale!</span>
 
+          <p>{{ sale }}</p>
+
           <!-- loop -->
           <ul>
             <li v-for="detail in details">{{detail}}</li>

@@ -25,7 +25,8 @@ var app = new Vue({
       }
     ],
     sizes: ["PP", "P", "M", "G", "GG"],
-    cart: 0
+    cart: 0,
+    onSale: true
   },
   methods: {
     addToCart() {
@@ -48,6 +49,13 @@ var app = new Vue({
     },
     inStock() {
       return this.variants[this.selectedVariant].variantQuantity
+    },
+    sale() {
+      if (this.onSale) {
+        return this.brand + ' ' + this.product + ' are on sale!'
+      } else {
+        return this.brand + ' ' + this.product + ' are not on sale'
+      }
     }
   }
 });
