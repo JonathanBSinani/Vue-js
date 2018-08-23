@@ -14,7 +14,7 @@
         </div>
 
         <div class="product-info">
-          <h1>{{ product }}</h1>
+          <h1>{{ title }}</h1>
           <!-- conditional -->
           <p v-if="inventory > 10">In Stock</p>
           <p v-else-if="inventory > 0 && inventory < 10">Almost sold out!</p>
@@ -28,10 +28,10 @@
           </ul>
 
           <div class="color-box"
-               v-for="variant in variants"
+               v-for="(variant, index) in variants"
                :key="variant.variantId"
                :style="{ backgroundColor: variant.variantColor }"
-               @mouseover="updateProduct(variant.variantImage)">
+               @mouseover="updateProduct(index)">
           </div>
 
           <!-- Challenge v-for -->
