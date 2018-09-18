@@ -60,9 +60,6 @@ Vue.component('product', {
         <!-- Challenge Event Handling -->
         <button v-on:click="decrementToCart">Decrement To Cart</button>
 
-        <div class="cart">
-          <p>Cart({{cart}})</p>
-        </div>
       </div>
     </div>
   `,
@@ -73,7 +70,7 @@ Vue.component('product', {
       image: './assets/vmSocks-green.jpg',
       altText: 'A pair of socks',
       selectedVariant: 0,
-      inStock: false,
+      inStock: true,
       inventory: 100,
       onSale: true,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
@@ -92,21 +89,20 @@ Vue.component('product', {
         }
       ],
       sizes: ["PP", "P", "M", "G", "GG"],
-      cart: 0,
       onSale: true
     }
   },
   methods: {
     addToCart() {
-      this.cart += 1
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
     },
     decrementToCart() {
-      this.cart -= 1
+      this.$emit('remove-to-cart', this.variants[this.selectedVariant].variantId)
     },
     updateProduct(index) {
       this.selectedVariant = index
       console.log(index)
-    }
+    },
   },
   computed: {
     title() {
@@ -138,6 +134,16 @@ Vue.component('product', {
 var app = new Vue({
   el: '#app',
   data: {
-    premium: true
+    premium: true,
+    cart: []
+  },
+  methods: {
+    updateCart(id) {
+      this.cart.push(id)
+    },
+    removeCart(id) {
+
+    }
+
   }
 });
